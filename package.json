@@ -1,0 +1,19 @@
+{
+  "name": "blocipedia",
+  "version": "1.0.0",
+  "description": "A Wiki application writtenin Node.",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "export NODE_ENV=test && jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhurstGH/blocipedia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhurstGH/blocipedia/issues"
+  },
+  "homepage": "https://github.com/bhurstGH/blocipedia#readme"
+}
