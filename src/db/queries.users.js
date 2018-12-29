@@ -6,7 +6,7 @@ module.exports = {
         const salt = bcrypt.genSaltSync();
         const hashedPassword = bcrypt.hashSync(newUser.password, salt);
         return User.create({
-            username: newUser.name,
+            username: newUser.username,
             email: newUser.email,
             password: hashedPassword
         })

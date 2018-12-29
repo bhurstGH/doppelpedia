@@ -10,12 +10,12 @@ module.exports = {
             username: req.body.name,
             email: req.body.email,
             password: req.body.password,
-            passwordConfirmation: req.body.password_conf
+            password_conf: req.body.password_conf
         };
         userQueries.createUser(newUser, (err, user) => {
             if (err) {
                 req.flash("error", err);
-                req.redirect("/users/signup");
+                res.redirect("/users/signup");
             } else {
                 passport.authenticate("local")(req, res, () => {
                     req.flash("notice", "You've successfully signed in!");

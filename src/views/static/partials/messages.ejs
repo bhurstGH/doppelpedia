@@ -1,6 +1,6 @@
 <% if(messages.error || messages.notice) { %>
 
-    <div class="small reveal" id="flashModal" data-reveal>
+    <div class="callout alert" data-closable>
         <% if(messages.error) { %>
             Validation errors:
             <ul>
@@ -11,8 +11,8 @@
         <% } else { %>
             <p><%= messages.notice %></p>
         <% } %>
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-            <span aria-hidden="true">$times;</span>
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
         </button>
     </div>
     
