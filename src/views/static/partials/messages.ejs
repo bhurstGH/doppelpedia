@@ -1,0 +1,19 @@
+<% if(messages.error || messages.notice) { %>
+
+    <div class="small reveal" id="flashModal" data-reveal>
+        <% if(messages.error) { %>
+            Validation errors:
+            <ul>
+                <% messages.error.forEach((err) => { %>
+                    <li><%= `${err.param} ${err.msg}` %></li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p><%= messages.notice %></p>
+        <% } %>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">$times;</span>
+        </button>
+    </div>
+    
+<% } %>

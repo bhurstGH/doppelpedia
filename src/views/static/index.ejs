@@ -1,17 +1,49 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-    <head>
-        <% include ./partials/head.ejs %>
-    </head>
-    <body>
-        <div>
-            <% include ./partials/navbar.ejs %>
-            <main class="grid-x align-center">
 
-                <h1>Blocipedia</h1>
+<head>
+    <% include ./partials/head.ejs %>
+</head>
 
-            </main>
-        </div>
-        <% include ./partials/baseScripts.ejs %>
-    </body>
+<body>
+    <div>
+        <% include ./partials/navbar.ejs %>
+        <% include ./partials/messages.ejs %>
+        <main class="grid-container">
+            <div class="grid-x grid-padding-x grid-margin-y">
+
+                <section class="cell text-center">
+                    <h1>Welcome to Blocipedia</h1>
+                    <div class="callout secondary" style="margin:auto;width:60%;">
+                        <h2>Create and Share Markdown Wikis</h2>
+                        <a href="/users/signup"><button class="large button">Sign up!</button></a>
+                    </div>
+                </section>
+
+                <section class="grid-x grid-margin-x" style="margin:auto;">
+
+                    <div class="cell small-6">
+                    <div class="card" style="width:300px;height:150px;">
+                        <div class="card-section">
+                            <h4>Free accounts:</h4>
+                            <p>Create as many public wikis as you want!</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="cell small-6">
+                    <div class="card" style="width:300px;height:150px;">
+                        <div class="card-section">
+                            <h4>Premium accounts:</h4>
+                            <p>Create private wikis!</p>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+    <% include ./partials/baseScripts.ejs %>
+</body>
+
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../static/partials/head.ejs %>
+</head>
+
+<body>
+  <% include ../static/partials/navbar.ejs %>
+  <% include ../static/partials/messages.ejs %>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x align-center">
+      <h2 class="cell text-center">Sign up with Blocipedia!</h2>
+      <form method="POST" action="/users/signup" class="callout">
+        <div class="medium-8 cell">
+          <label>Name:</label>
+          <input type="text" name="name" placeholder="Enter Name" />
+        </div>
+        <div class="medium-8 cell">
+          <label>Email:</label>
+          <input type="email" name="email" placeholder="Enter Email" />
+        </div>
+        <div class="cell medium-8">
+          <label>Password:</label>
+          <input type="password" name="password" placeholder="Enter Password" />
+        </div>
+        <div class="medium-8 cell">
+          <label>Password:</label>
+          <input type="password" name="password_conf" placeholder="Enter Password confirmation" />
+        </div><br />
+        <input type="submit" value="Sign Up" class="button primary" />
+      </form>
+    </div>
+  </div>
+  <% include ../static/partials/baseScripts.ejs %>
+</body>
+
+</html>
