@@ -1,5 +1,6 @@
 const userQueries = require("../db/queries.users.js");
 const passport = require("passport");
+const confirmEmail = require("./emailController");
 
 module.exports = {
     signUp(req, res, next) {
@@ -20,6 +21,8 @@ module.exports = {
                 passport.authenticate("local")(req, res, () => {
                     req.flash("notice", "You've successfully signed in!");
                     res.redirect("/");
+                    
+                    confirmEmail(user.email, user.username);
                 })
             }
         });

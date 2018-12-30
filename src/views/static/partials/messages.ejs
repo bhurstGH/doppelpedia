@@ -1,6 +1,6 @@
 <% if(messages.error || messages.notice) { %>
 
-    <div class="callout alert" data-closable>
+    <div class="callout <%= messages.error ? 'alert' : 'warning' %>" data-closable>
         <% if(messages.error) { %>
             Validation errors:
             <ul>
