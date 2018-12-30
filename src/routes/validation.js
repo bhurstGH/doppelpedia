@@ -1,6 +1,7 @@
 module.exports = {
     validateUsers(req, res, next) {
         if (req.method === "POST") {
+            req.checkBody("name", "must be less than 25 characters").isLength({max: 25});
             req.checkBody("email", "must be valid").isEmail();
             req.checkBody("password", "must be at least 6 characters long").isLength({min: 6});
             req.checkBody("password_conf", "must match password provided").optional().matches(req.body.password);

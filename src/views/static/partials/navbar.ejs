@@ -6,11 +6,25 @@
             </ul>
         </div>
         <div class="top-bar-right">
-            <ul class="menu">
-                <li>
-                    <a href="/signin" class="hollow button">Sign In</a>
-                </li>    
-            </ul>
+            <% if (currentUser) { %>
+                <ul class="menu">
+                    <li class="menu-text">
+                        <%= currentUser.username %>
+                    </li>
+                    <li>
+                        <a href="/users/signout" class="hollow button">Sign Out</a>
+                    </li>
+                </ul>
+            <% } else { %>
+                <ul class="menu">
+                    <li>
+                        <a href="/users/signup" class="hollow button">Sign Up</a>
+                    </li>
+                    <li>
+                        <a href="/users/signin" class="hollow button">Sign In</a>
+                    </li>    
+                </ul>
+            <% } %>
         </div>
     </nav>
 </div>

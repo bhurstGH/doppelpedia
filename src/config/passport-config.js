@@ -19,7 +19,7 @@ module.exports = {
                     return done(null, false, {message: "Invalid email or password"});
                 }
                 return done(null, user);
-            })
+            }).catch(done);
         }));
 
         passport.serializeUser((user, callback) => {
