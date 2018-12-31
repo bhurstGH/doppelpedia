@@ -23,7 +23,7 @@ module.exports = {
             if (err) {
                 res.redirect(500, "/wikis/new");
             } else {
-                res.redirect(303, `/wikis/${newWiki.id}`)
+                res.redirect(303, `/wikis/${wiki.id}`)
             }
         });
     },
@@ -32,7 +32,7 @@ module.exports = {
             if (err || wiki == null) {
                 res.redirect(404, "/");
             } else {
-                res.render("wikis/show", {wiki})
+                res.render("wikis/wiki", {wiki})
             }
         });
     },
@@ -41,7 +41,7 @@ module.exports = {
             if (err) {
                 res.redirect(500, `/wikis/${req.params.id}`);
             } else {
-                res.redirect(303, "/wikis");
+                res.redirect(303, "/");
             }
         });
     },

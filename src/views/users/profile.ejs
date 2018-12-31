@@ -12,11 +12,15 @@
                 <div class="cell">
                     <h1><%= `${user.username}'s` %> Wikis:</h1>
                     <% if (wikis) { %>
-                        <% wikis.forEach((wiki) => { %>
-                            <a href="#">
-                                <%= wiki.title %>
-                            </a>
-                        <% }) %>
+                        <ul>
+                            <% wikis.forEach((wiki) => { %>
+                            <li>
+                                <a href="/wikis/<%= wiki.id %>">
+                                    <%= wiki.title %>
+                                </a>
+                            </li>
+                            <% }) %>
+                        </ul>
                     <% } %>
                 </div>
             </div>

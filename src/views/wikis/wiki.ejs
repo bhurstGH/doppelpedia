@@ -8,9 +8,18 @@
         <% include ../static/partials/messages.ejs %>
 
         <main class="grid-container">
-            <div class="grid-y">
+            <div class="grid-x grid-padding-y text-center">
+                <div class="cell small-12">
+                    <a class="button warning" href="/wikis/<%= wiki.id %>/edit">Edit</a>
+                    <form style="display: initial" action="/wikis/<%= wiki.id %>/destroy" method="post">
+                        <button type="submit" class="button alert">Delete</button>
+                    </form>
+                </div>
                 <div class="cell">
-                    <h1>Here's a wiki!</h1>
+                    <h1><%= wiki.title %></h1>
+                </div>
+                <div class="cell">
+                    <%= wiki.body %>
                 </div>
             </div>
         </main>
