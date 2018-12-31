@@ -4,9 +4,9 @@ module.exports = {
     public(req, res, next) {
         wikiQueries.getPublicWikis((err, wikis) => {
             if (err) {
-                res.redirect(500, "static/index");
+                res.redirect(500, "/");
             } else {
-                res.render("static/wikis", {wikis});
+                res.render("/", {wikis});
             }
         });
     },

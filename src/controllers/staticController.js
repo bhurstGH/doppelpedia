@@ -1,5 +1,9 @@
 module.exports = {
     index(req, res, next) {
-        res.render("static/index");
+        if (!req.user) {
+            res.render("static/index");
+        } else {
+            res.redirect(`users/${req.user.id}`);
+        }
     }
 }

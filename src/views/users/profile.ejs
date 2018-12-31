@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <% include ../static/partials/head.ejs %>
+    </head>
+    <body>
+        <% include ../static/partials/navbar.ejs %>
+        <% include ../static/partials/messages.ejs %>
+
+        <main class="grid-container">
+            <div class="grid-y">
+                <div class="cell">
+                    <h1><%= `${user.username}'s` %> Wikis:</h1>
+                    <% if (wikis) { %>
+                        <% wikis.forEach((wiki) => { %>
+                            <a href="#">
+                                <%= wiki.title %>
+                            </a>
+                        <% }) %>
+                    <% } %>
+                </div>
+            </div>
+        </main>
+
+        <% include ../static/partials/baseScripts.ejs %>
+    </body>
+</html>

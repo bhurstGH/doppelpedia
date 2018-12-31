@@ -46,5 +46,15 @@ module.exports = {
         req.logout();
         req.flash("notice", "You've successfully signed out")
         res.redirect("/");
+    },
+    profile(req, res, next) {
+        userQueries.getUser(req.params.id, (err, result) => {
+            if (err || result.user === undefined) {
+                req.flash("notice", "That user wasn't found.");
+                res.redirect("/");
+            } else {
+                res.render("users/profile", {...result});
+            }
+        })
     }
 }

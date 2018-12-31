@@ -8,14 +8,14 @@
         <div class="top-bar-right">
             <% if (currentUser) { %>
                 <ul class="dropdown menu" data-dropdown-menu>
-                    <li class="menu-text has-submenu">
-                        <%= currentUser.username %>
-                        <ul class="submenu menu vertical" data-submenu>
+                    <li>
+                        <a href="/" class="menu-text"><%= currentUser.username %></a>
+                        <ul class="menu">
                             <li>
-                                <a href="#">Profile</a>
+                                <a href="/">Profile</a>
                             </li>
                             <li>
-                                <a href="#">New Wiki</a>
+                                <a href="/wikis/new">New Wiki</a>
                             </li>
                             <li>
                                 <a href="/users/signout">Sign Out</a>
