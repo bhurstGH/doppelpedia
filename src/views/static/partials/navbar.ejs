@@ -7,12 +7,20 @@
         </div>
         <div class="top-bar-right">
             <% if (currentUser) { %>
-                <ul class="menu">
-                    <li class="menu-text">
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <li class="menu-text has-submenu">
                         <%= currentUser.username %>
-                    </li>
-                    <li>
-                        <a href="/users/signout" class="hollow button">Sign Out</a>
+                        <ul class="submenu menu vertical" data-submenu>
+                            <li>
+                                <a href="#">Profile</a>
+                            </li>
+                            <li>
+                                <a href="#">New Wiki</a>
+                            </li>
+                            <li>
+                                <a href="/users/signout">Sign Out</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             <% } else { %>
