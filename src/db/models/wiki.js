@@ -26,5 +26,17 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE"
     });
   };
+  Wiki.addScope("newest", () => {
+    return {
+      limit: 5,
+      order:[["createdAt", "DESC"]]
+    }
+  });
+  Wiki.addScope("updated", () => {
+    return {
+      limit: 5,
+      order: [["updatedAt", "DESC"]]
+    }
+  });
   return Wiki;
 };

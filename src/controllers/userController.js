@@ -38,7 +38,7 @@ module.exports = {
                 res.redirect("users/signin");
             } else {
                 req.flash("notice", `You've successfully signed in as ${req.user.username}`);
-                res.redirect("/");
+                res.redirect(`/users/${req.user.id}`);
             }
         })
     },

@@ -54,5 +54,25 @@ module.exports = {
                 callback(err);
             })
         })
+    },
+    newestWikis(callback) {
+        return Wiki.scope({method: ["newest"]})
+        .findAll()
+            .then((newest) => {
+                callback(null, newest);
+            })
+            .catch((err) => {
+                callback(err);
+            })
+    },
+    recentUpdate(callback) {
+        return Wiki.scope({method: ["updated"]})
+        .findAll()
+        .then((updated) => {
+            callback(null, updated);
+        })
+        .catch((err) => {
+            callback(err);
+        })
     }
 }

@@ -9,10 +9,10 @@
             <% if (currentUser) { %>
                 <ul class="dropdown menu" data-dropdown-menu>
                     <li>
-                        <a href="/" class="menu-text"><%= currentUser.username %></a>
+                        <a href="/users/<%= currentUser.id %>" class="menu-text"><%= currentUser.username %></a>
                         <ul class="menu">
                             <li>
-                                <a href="/">Profile</a>
+                                <a href="/users/<%= currentUser.id %>">Profile</a>
                             </li>
                             <li>
                                 <a href="/wikis/new">New Wiki</a>

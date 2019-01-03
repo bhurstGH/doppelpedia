@@ -12,33 +12,65 @@
         <main class="grid-container">
             <div class="grid-x grid-padding-x grid-margin-y">
                 
-                <section class="cell text-center">
-                    <h1>Welcome to Blocipedia</h1>
-                    <div class="callout secondary" style="margin:auto;width:60%;">
-                        <h2>Create and Share Markdown Wikis</h2>
-                        <a href="/users/signup"><button class="large button">Sign up!</button></a>
-                    </div>
-                </section>
-
-                <section class="grid-x grid-margin-x" style="margin:auto;">
-
-                    <div class="cell small-12 medium-6">
-                    <div class="card" style="width:300px;height:150px;">
-                        <div class="card-section">
-                            <h4>Free accounts:</h4>
-                            <p>Create as many public wikis as you want!</p>
+                <% if(!currentUser) { %>
+                    <section class="cell text-center">
+                        <h1>Welcome to Blocipedia</h1>
+                        <div class="callout secondary" style="margin:auto;width:60%;">
+                            <h2>Create and Share Markdown Wikis</h2>
+                            <a href="/users/signup"><button class="large button">Sign up!</button></a>
                         </div>
-                    </div>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                    <div class="card" style="width:300px;height:150px;">
-                        <div class="card-section">
-                            <h4>Premium accounts:</h4>
-                            <p>Create private wikis!</p>
+                    </section>
+
+                    <section class="grid-x grid-margin-x" style="margin:auto;">
+
+                        <div class="cell small-12 medium-6">
+                        <div class="card" style="width:300px;height:150px;">
+                            <div class="card-section">
+                                <h4>Free accounts:</h4>
+                                <p>Create as many public wikis as you want!</p>
+                            </div>
                         </div>
-                    </div>
-                    </div>
-                </section>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                        <div class="card" style="width:300px;height:150px;">
+                            <div class="card-section">
+                                <h4>Premium accounts:</h4>
+                                <p>Create private wikis!</p>
+                            </div>
+                        </div>
+                        </div>
+                    </section>
+                <% } else { %>
+                    <section class="cell">
+                        <h2>Newest wikis:</h2>
+                        <% if (newest) { %>
+                            <ul>
+                                <% newest.forEach((wiki) => { %>
+                                    <li>
+                                        <a href="/wikis/<%= wiki.id %>">
+                                            <%= wiki.title %>
+                                        </a>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                        <% } %>
+                    </section>
+
+                    <section class="cell">
+                        <h2>Recently updated wikis:</h2>
+                        <% if (updated) { %>
+                            <ul>
+                                <% updated.forEach((wiki) => { %>
+                                    <li>
+                                      <a href="/wikis/<%= wiki.id %>">
+                                            <%= wiki.title %>
+                                        </a>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                        <% } %>
+                    </section>
+                <% } %>
 
             </div>
         </main>
