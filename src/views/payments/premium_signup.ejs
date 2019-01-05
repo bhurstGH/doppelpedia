@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+    <head>
+        <% include ../static/partials/head.ejs %>
+    </head>
+
+    <body>
+        <% include ../static/partials/navbar.ejs %>
+        <% include ../static/partials/messages.ejs %>
+
+        <main class="grid-container">
+            <div class="grid-x grid-padding-x">
+                <form action="payments/charge" method="POST">
+                    <script
+                        src="https://checkout.stripe.com/checkout.js" 
+                        class="stripe-button"
+                        data-key="<%= publicKey %>"
+                        data-locale="auto"
+                        data-description="Sample Premium Account Charge"
+                        data-amount="<%= process.env.PREMIUM_COST %>"
+                        data-zip-code="true">
+                    </script>
+                </form>
+            </div>
+        </main>
+        
+        <% include ../static/partials/baseScripts.ejs %>
+    </body>
+
+</html>

@@ -1,3 +1,4 @@
 /node_modules
 .env
 sendgrid.env
+src/db/seeds/20190104183607-users-and-wikis.js

@@ -1,8 +1,5 @@
 'use strict';
 const faker = require("faker");
-const bcrypt = require("bcryptjs");
-const salt = bcrypt.genSaltSync();
-const hashedPassword = bcrypt.hashSync("asdasd", salt);
 
 let users = [];
 
@@ -13,17 +10,9 @@ for (let i = 1; i <= 15; i++) {
     password: faker.internet.password(),
     createdAt: faker.date.past(),
     updatedAt: faker.date.recent(),
-    role: 0
+    role: "standard"
   });
 }
- users.push({
-   username: "member",
-   email: "member@member.com",
-   password: hashedPassword,
-   createdAt: new Date(),
-   updatedAt: new Date(),
-   role: 0
- })
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
