@@ -10,7 +10,12 @@ function newUser(email, name) {
         Username: ${name}
         Email: ${email}`
     };
-    sgMail.send(msg);
+    sgMail.send(msg).then(() => {
+        console.log("Email successful!");
+    })
+    .catch((err) => {
+        console.log(err.toString());
+    })
 }
 
 module.exports = newUser;

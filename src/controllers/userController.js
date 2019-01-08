@@ -56,5 +56,14 @@ module.exports = {
                 res.render("users/profile", {...result});
             }
         })
+    },
+    cancelPage(req, res, next) {
+        res.render("users/downgrade");
+    },
+    cancel(req, res, next) {
+        userQueries.cancelPremium(req, (err, user) => {
+            req.flash("notice", "Your premium account has been canceled");
+            res.redirect(`/users/${req.user.id}`);
+        })
     }
 }

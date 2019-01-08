@@ -10,8 +10,14 @@
         <% include ../static/partials/messages.ejs %>
 
         <main class="grid-container">
-            <div class="grid-x grid-padding-x">
-                <form action="payments/charge" method="POST">
+            <div class="grid-x grid-padding-y">
+                <div class="cell">
+                    <h1>Upgrade to Premium!</h1>
+                    <p>Create private wikis and add collaborators for just $15.00!</p>
+                    <p>Click the button below to upgrade!</p>
+                </div>
+                <div class="cell">
+                <form action="/payments/charge" method="POST">
                     <script
                         src="https://checkout.stripe.com/checkout.js" 
                         class="stripe-button"
@@ -22,6 +28,7 @@
                         data-zip-code="true">
                     </script>
                 </form>
+                </div>
             </div>
         </main>
         

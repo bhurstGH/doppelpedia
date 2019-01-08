@@ -17,6 +17,13 @@
                             <li>
                                 <a href="/wikis/new">New Wiki</a>
                             </li>
+                            <% if (currentUser.role !== "premium") { %>
+                            <li>
+                                <a href="/payments/premium_signup">Premium</a>
+                            </li>
+                            <% } else { %>
+                                <a href="/users/<%= currentUser.id %>/downgrade">Cancel Premium</a>
+                            <% } %>
                             <li>
                                 <a href="/users/signout">Sign Out</a>
                             </li>

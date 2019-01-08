@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
     <head>
         <% include ../static/partials/head.ejs %>
     </head>
+
     <body>
         <% include ../static/partials/navbar.ejs %>
         <% include ../static/partials/messages.ejs %>
@@ -10,13 +12,15 @@
         <main class="grid-container">
             <div class="grid-x grid-padding-y">
                 <div class="cell">
-                    <h1>Thanks for becoming a Premium member!</h1>
-
-                    <p>Now you can create private wikis!</p>
+                    <h1>Downgrade to a free account.</h1>
+                    <form class="display: initial" action="/users/<%= currentUser.id %>/downgrade" method="POST">
+                        <button type="submit" class="button alert">Cancel Premium</button>
+                    </form>
                 </div>
             </div>
         </main>
         
         <% include ../static/partials/baseScripts.ejs %>
     </body>
+
 </html>
