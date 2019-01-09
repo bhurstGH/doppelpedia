@@ -72,10 +72,20 @@ module.exports = {
                     role: "standard"
                 })
                 .then((res) => {
-                    callback(null, res);
-                })
-                .catch((err) => {
-                    callback(err);
+                    Wiki.update({
+                        private: false
+                    },{
+                        where: {
+                            userId: user.id,
+                            private: true
+                        }
+                    })
+                    .then((res) => {
+                        callback(null, res);
+                    })
+                    .catch((err) => {
+                        callback(err);
+                    })
                 })
             } else {
                 req.flash("notice", "You are not a premium user.");

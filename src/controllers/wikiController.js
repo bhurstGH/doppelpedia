@@ -15,7 +15,7 @@ module.exports = {
     },
     create(req, res, next) {
         let private;
-        if (req.body.privateSwitch) {
+        if (req.body.private) {
             private = true;
         } else {
             private = false;
@@ -62,7 +62,18 @@ module.exports = {
         });
     },
     update(req, res, next) {
-        wikiQueries.updateWiki(req.params.id, req.body, (err, wiki) => {
+        let private;
+        if (req.body.private) {
+            private = true;
+        } else {
+            private = false;
+        }
+        let updatedWiki = {
+            title: req.body.title,
+            body: req.body.body,
+            private: private,
+        };
+        wikiQueries.updateWiki(req, updatedWiki, (err, wiki) => {
             if (err || wiki == null) {
                 res.redirect(404, `/wikis/${req.params.id}/edit`)
             } else {

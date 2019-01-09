@@ -33,10 +33,10 @@
                         <% if ((wiki.userId == currentUser.id) && (currentUser.isPremium())) { %>
                             <div class="cell shrink">
                                 <div class="input-group">
-                                    <label for="privateSwitch" class="text-right middle">Make Wiki Private:</label>
+                                    <label for="private" class="text-right middle">Make Wiki Private:</label>
                                     <div class="switch large">
-                                        <input class="switch-input" id="privateSwitch" type="checkbox" name="privateSwitch">
-                                        <label class="switch-paddle" for="privateSwitch">
+                                        <input class="switch-input" id="private" type="checkbox" name="private" <%= wiki.private ? "checked" : "" %>>
+                                        <label class="switch-paddle" for="private">
                                             <span class="show-for-sr">Private switch</span>
                                         </label>
                                     </div>

@@ -66,8 +66,8 @@ module.exports = {
             callback(err);
         })
     },
-    updateWiki(id, updatedWiki, callback) {
-        return Wiki.findByPk(id)
+    updateWiki(req, updatedWiki, callback) {
+        return Wiki.findByPk(req.params.id)
         .then((wiki) => {
             wiki.update(updatedWiki, {
                 fields: Object.keys(updatedWiki)
