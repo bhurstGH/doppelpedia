@@ -16,9 +16,11 @@
                     </form>
                 </div>
                 <div class="cell">
-                    <h1><%= wiki.title %>
-                    <span class="primary badge"><%= wiki.private ? "Private" : "Public" %></span>
+                    <h1>
+                        <%= wiki.title %>
+                        <span class="<%= wiki.private ? "success" : "primary" %> badge"><%= wiki.private ? "Private" : "Public" %></span>
                     </h1>
+                    <span>Wiki Owner:</span> <a href="/users/<%= wiki.User.id %>"><%= wiki.User.username %></a>
                     <hr>
                 </div>
                 <div class="cell">

@@ -1,9 +1,13 @@
 const Wiki = require("./models").Wiki;
+const User = require("./models").User;
 
 module.exports = {
-    getPublicWikis(callback) {
+    getAllWikis(callback) {
         return Wiki.findAll({
-            where: { private: false }
+            where: { private: false },
+            include: [{
+                model: User
+            }]
         })
         .then((wikis) => {
             callback(null, wikis);
@@ -22,7 +26,11 @@ module.exports = {
         })
     },
     getWiki(id, callback) {
-        return Wiki.findByPk(id)
+        return Wiki.findByPk(id, {
+            include: [{
+                model: User
+            }]
+        })
         .then((wiki) => {
             callback(null, wiki);
         })
@@ -57,7 +65,11 @@ module.exports = {
     },
     newestWikis(callback) {
         return Wiki.scope({method: ["newest"]})
-        .findAll()
+        .findAll({
+            include: [{
+                model: User
+            }]
+        })
             .then((newest) => {
                 callback(null, newest);
             })
@@ -67,7 +79,11 @@ module.exports = {
     },
     recentUpdate(callback) {
         return Wiki.scope({method: ["updated"]})
-        .findAll()
+        .findAll({
+            include: [{
+                model: User
+            }]
+        })
         .then((updated) => {
             callback(null, updated);
         })

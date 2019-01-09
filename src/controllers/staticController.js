@@ -6,11 +6,14 @@ module.exports = {
             res.render("static/index");
         } else {
             let result = {};
-            wikiQueries.newestWikis((err, wikis) => {
-                result["newest"] = wikis;
+            wikiQueries.newestWikis((err, newest) => {
+                result["newest"] = newest;
                 wikiQueries.recentUpdate((err, updated) => {
                     result["updated"] = updated;
-                    res.render("static/index", {...result})
+                    wikiQueries.getAllWikis((err, wikis) => {
+                        result["wikis"] = wikis;
+                        res.render("static/index", {...result})
+                    })
                 })
             });
         }
