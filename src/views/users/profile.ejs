@@ -18,6 +18,9 @@
                                 <a href="/wikis/<%= wiki.id %>">
                                     <%= wiki.title %>
                                 </a>
+                                <% if (wiki.private == true) { %>
+                                    <span class="success badge">Private</span>
+                                <% } %>
                             </li>
                             <% }) %>
                         </ul>

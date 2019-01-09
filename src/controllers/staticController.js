@@ -10,7 +10,7 @@ module.exports = {
                 result["newest"] = newest;
                 wikiQueries.recentUpdate((err, updated) => {
                     result["updated"] = updated;
-                    wikiQueries.getAllWikis((err, wikis) => {
+                    wikiQueries.getPublicWikis((err, wikis) => {
                         result["wikis"] = wikis;
                         res.render("static/index", {...result})
                     })

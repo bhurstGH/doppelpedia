@@ -24,6 +24,7 @@
                         <div class="cell shrink">
                             <input type="submit" value="Create" class="button primary" />
                         </div>
+                        <% if (currentUser.isPremium() || currentUser.isAdmin()) { %>
                         <div class="cell shrink">
                             <div class="input-group">
                                 <label for="privateSwitch" class="text-right middle">Make Wiki Private:</label>
@@ -35,6 +36,7 @@
                                 </div>
                             </div>
                         </div>
+                        <% } %>
                     </div>
                 </form>
             </div>
