@@ -11,13 +11,7 @@
             <div class="grid-x grid-padding-x align-center">
                 <h2 class="cell text-center">Create a new wiki!</h2>
                 <form method="POST" action="/wikis/create" class="callout small-12 medium-8">
-                    <!-- <label>Private:</label>
-                    <div class="switch tiny">
-                        <input class="switch-input" id="privateSwitch" type="checkbox" name="privateSwitch">
-                        <label class="switch-paddle" for="privateSwitch">
-                            <span class="show-for-sr">Private switch</span>
-                        </label>
-                    </div> -->
+                 
                     <div class="cell">
                         <label>Title:</label>
                         <input type="text" name="title" placeholder="Enter Title" />
@@ -26,7 +20,22 @@
                         <label>Body:</label>
                         <textarea rows="20" name="body" placeholder="Start Wiki'ing!"></textarea>
                     </div>
-                    <input type="submit" value="Create" class="button primary" />
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell shrink">
+                            <input type="submit" value="Create" class="button primary" />
+                        </div>
+                        <div class="cell shrink">
+                            <div class="input-group">
+                                <label for="privateSwitch" class="text-right middle">Make Wiki Private:</label>
+                                <div class="switch large">
+                                    <input class="switch-input" id="privateSwitch" type="checkbox" name="privateSwitch">
+                                    <label class="switch-paddle" for="privateSwitch">
+                                        <span class="show-for-sr">Private switch</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

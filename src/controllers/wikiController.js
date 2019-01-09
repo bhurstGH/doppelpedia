@@ -14,9 +14,16 @@ module.exports = {
         res.render("wikis/new");
     },
     create(req, res, next) {
+        let private;
+        if (req.body.privateSwitch) {
+            private = true;
+        } else {
+            private = false;
+        }
         let newWiki = {
             title: req.body.title,
             body: req.body.body,
+            private: private,
             userId: req.user.id
         };
         wikiQueries.createWiki(newWiki, (err, wiki) => {
