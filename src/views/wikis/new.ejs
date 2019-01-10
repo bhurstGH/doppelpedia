@@ -7,9 +7,9 @@
         <% include ../static/partials/navbar.ejs %>
         <% include ../static/partials/messages.ejs %>
 
-        <div class="grid-container">
             <div class="grid-x grid-padding-x align-center">
                 <h2 class="cell text-center">Create a new wiki!</h2>
+                <hr>
                 <form method="POST" action="/wikis/create" class="callout small-12 medium-8">
                  
                     <div class="cell">
@@ -18,7 +18,7 @@
                     </div>
                     <div class="cell">
                         <label>Body:</label>
-                        <textarea rows="20" name="body" placeholder="Start Wiki'ing!"></textarea>
+                        <textarea rows="20" name="body" placeholder="Start Wiki'ing with markdown!"></textarea>
                     </div>
                     <div class="grid-x grid-margin-x">
                         <div class="cell shrink">
@@ -40,7 +40,6 @@
                     </div>
                 </form>
             </div>
-        </div>
 
         <% include ../static/partials/baseScripts.ejs %>
     </body>

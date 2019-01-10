@@ -1,4 +1,5 @@
 const wikiQueries = require("../db/queries.wikis");
+const markdown = require("markdown").markdown;
 
 module.exports = {
     public(req, res, next) {
@@ -39,6 +40,7 @@ module.exports = {
             if (err || wiki == null) {
                 res.redirect(404, "/");
             } else {
+                wiki.body = markdown.toHTML(wiki.body);
                 res.render("wikis/wiki", {wiki})
             }
         });
