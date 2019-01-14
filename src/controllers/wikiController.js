@@ -1,4 +1,5 @@
 const wikiQueries = require("../db/queries.wikis");
+const userQueries = require("../db/queries.users");
 const markdown = require("markdown").markdown;
 
 module.exports = {
@@ -82,5 +83,47 @@ module.exports = {
                 res.redirect(`/wikis/${req.params.id}`);
             }
         });
+    },
+    collaborators(req, res, next) {
+        wikiQueries.getWiki(req.params.id, (err, wiki) => {
+            if (err || wiki == null) {
+                res.redirect(404, `/wikis/${req.params.id}`);
+            } else {
+                wikiQueries.getCollabs(req, (err, collabs) => {
+                    if (err) {
+                        res.redirect(404, `/wikis/${req.params.id}`);
+                    } else {
+                        res.render(`wikis/collaborators`, {wiki, collabs})
+                    }
+                })
+            }
+        })
+    },
+    getCollabs(req, res, next) {
+
+    },
+    addCollab(req, res, next) {
+        userQueries.getUserByEmail(req.body.email, (err, user) => {
+            if (err || user == null) {
+                res.redirect(404, `/wikis/${req.params.id}/collaborators`)
+            } else {
+                wikiQueries.createCollab(req, user, (err, collab) => {
+                    if (err || collab == null) {
+                        res.redirect(404, `/wikis/${req.params.id}/collaborators`)
+                    } else {
+                        res.redirect(`/wikis/${req.params.id}/collaborators`);
+                    }
+                })
+            }
+        })
+    },
+    removeCollab(req, res, next) {
+        wikiQueries.destroyCollab(req, (err, destroyed) => {
+            if (err) {
+                res.redirect(404, `/wikis/${req.params.wikiId}/collaborators`)
+            } else {
+                res.redirect(`/wikis/${req.params.wikiId}/collaborators`)
+            }
+        })
     }
 }

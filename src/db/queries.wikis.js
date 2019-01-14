@@ -109,5 +109,48 @@ module.exports = {
         .catch((err) => {
             callback(err);
         })
+    },
+    createCollab(req, user, callback) {
+        return Wiki.findByPk(req.params.id)
+        .then((wiki) => {
+            wiki.addUser(user, {
+                through: "Collaborators"
+            })
+            .then((collab) => {
+                callback(null, collab);
+            })
+            .catch((err) => {
+                callback(err);
+             })
+        })
+    },
+    getCollabs(req, callback) {
+        return Wiki.findByPk(req.params.id)
+        .then((wiki) => {
+            wiki.getUsers({
+                through: "Collaborators"
+            })
+            .then((collabs) => {
+                callback(null, collabs);
+            })
+            .catch((err) => {
+                callback(err);
+            })
+        })
+    },
+    destroyCollab(req, callback) {
+        return Wiki.findByPk(req.params.wikiId)
+        .then((wiki) => {
+            User.findByPk(req.params.id)
+            .then((user) => {
+                wiki.removeUser(user)
+                .then((destroyed) => {
+                    callback(null, destroyed);
+                })
+                .catch((err) => {
+                    callback(err);
+                })
+            })
+        })
     }
 }

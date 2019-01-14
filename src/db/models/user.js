@@ -28,6 +28,11 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "userId",
       as: "wikis"
     });
+    User.belongsToMany(models.Wiki, {
+      through: "Collaborators",
+      foreignKey: 'UserId',
+      as: "Collabs"
+    })
   };
   User.prototype.isPremium = function() {
     return this.role == "premium";
@@ -35,5 +40,6 @@ module.exports = (sequelize, DataTypes) => {
   User.prototype.isAdmin = function() {
     return this.role == "admin";
   }
+
   return User;
 };

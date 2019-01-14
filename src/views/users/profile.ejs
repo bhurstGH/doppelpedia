@@ -26,6 +26,16 @@
                         </ul>
                     <% } %>
                 </div>
+                <% if (collabs) { %>
+                    <div class="cell">
+                        <h2>Collaborator on:</h2>
+                        <ul>
+                            <% collabs.forEach((collab) => { %>
+                                <a href="/wikis/<%= collab.id %>"><%= collab.title %></a>
+                            <% }) %>
+                        </ul>
+                    </div>
+                <% } %>
             </div>
         </main>
 

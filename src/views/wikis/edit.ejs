@@ -11,13 +11,6 @@
             <div class="grid-x grid-padding-x align-center">
                 <h2 class="cell text-center">Edit wiki!</h2>
                 <form method="POST" action="/wikis/<%= wiki.id %>/update" class="callout small-12 medium-8">
-                    <!-- <label>Private:</label>
-                    <div class="switch tiny">
-                        <input class="switch-input" id="privateSwitch" type="checkbox" name="privateSwitch">
-                        <label class="switch-paddle" for="privateSwitch">
-                            <span class="show-for-sr">Private switch</span>
-                        </label>
-                    </div> -->
                     <div class="cell">
                         <label>Title:</label>
                         <input value="<%= wiki.title %>" type="text" name="title" placeholder="Enter Title" />
@@ -30,7 +23,7 @@
                         <div class="cell shrink">
                             <input type="submit" value="Update" class="button primary" />
                         </div>
-                        <% if ((wiki.userId == currentUser.id) && (currentUser.isPremium())) { %>
+                        <% if (wiki.private) { %>
                             <div class="cell shrink">
                                 <div class="input-group">
                                     <label for="private" class="text-right middle">Make Wiki Private:</label>

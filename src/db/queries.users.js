@@ -29,10 +29,15 @@ module.exports = {
                     where: { userId: user.id }
                 })
                 .then((wikis) => {
-                    callback(null, {user, wikis});
-                })
-                .catch((err) => {
-                    callback(err);
+                    user.getCollabs({
+                        through: "Collaborators"
+                    })
+                    .then((collabs) => {
+                        callback(null, {user, wikis, collabs});
+                    })
+                    .catch((err) => {
+                        callback(err);
+                    })
                 })
             }
         })
@@ -91,6 +96,19 @@ module.exports = {
                 req.flash("notice", "You are not a premium user.");
                 callback(null, user);
             }
+        })
+    },
+    getUserByEmail(email, callback) {
+        return User.findOne({
+            where: {
+                email: email
+            }
+        })
+        .then((user) => {
+            callback(null, user);
+        })
+        .catch((err) => {
+            callback(err);
         })
     }
 }

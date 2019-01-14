@@ -14,6 +14,10 @@
                     <form style="display: initial" action="/wikis/<%= wiki.id %>/destroy" method="post">
                         <button type="submit" class="button alert">Delete</button>
                     </form>
+                    <% if (wiki.private == true) { %> 
+                        <% if (currentUser.id == wiki.userId) { %>
+                            <a class="button primary" href="/wikis/<%= wiki.id %>/collaborators">Collaborators</a>
+                    <% }} %>
                 </div>
                 <div class="cell">
                     <h1>
