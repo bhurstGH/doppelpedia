@@ -1,5 +1,5 @@
 {
-  "name": "blocipedia",
+  "name": "doppelpedia",
   "version": "1.0.0",
   "description": "A Wiki application writtenin Node.",
   "main": "src/server.js",
